@@ -1,0 +1,933 @@
+> makeCacheMatrix <- function(x=matrix()) {
++   m <- NULL
++   set <- function(y) {
++     x <<- y
++     m <<- NULL
++   }
++   get <- function(){
++     x
++   } 
++   setsolve <- function(){
++     m <<- solve(x)
++   } 
++   getsolve <- function(){
++     m
++   }
++   list(set = set, get = get,
++        setsolve = setsolve,
++        getsolve = getsolve)
++ }
+> 
+> #cachesolve function:
+> cacheSolve <- function(x, ...) {
++   m <- x$getsolve()
++   if(!is.null(m)) {
++     message("getting cached data")
++     return(m)
++   }
++ 
++   x$setsolve()
++   m
++ }
+> a=makeCacheMatrix(matrix(c(2,4,5,3),2,2))
+> cacheSolve(a)
+NULL
+> makeCacheMatrix <- function(x=matrix()) {
++   m <- NULL
++   set <- function(y) {
++     x <<- y
++     m <<- NULL
++   }
++   get <- function(){
++     x
++   } 
++   setsolve <- function(){
++     m <<- solve(x)
++   } 
++   getsolve <- function(){
++     m
++   }
++   list(set = set, get = get,
++        setsolve = setsolve,
++        getsolve = getsolve)
++ }
+> 
+> #cachesolve function:
+> cacheSolve <- function(x, ...) {
++   m <- x$getsolve()
++   if(!is.null(m)) {
++     message("getting cached data")
++     return(m)
++   }
++   data <- x$get()
++   m <- solve(data, ...)
++   x$setsolve()
++   m
++ 
+
+> makeCacheMatrix <- function(x=matrix()) {
++   m <- NULL
++   set <- function(y) {
++     x <<- y
++     m <<- NULL
++   }
++   get <- function(){
++     x
++   } 
++   setsolve <- function(){
++     m <<- solve(x)
++   } 
++   getsolve <- function(){
++     m
++   }
++   list(set = set, get = get,
++        setsolve = setsolve,
++        getsolve = getsolve)
++ }
+> 
+> #cachesolve function:
+> cacheSolve <- function(x, ...) {
++   m <- x$getsolve()
++   if(!is.null(m)) {
++     message("getting cached data")
++     return(m)
++   }
++   data <- x$get()
++   m <- solve(data, ...)
++   x$setsolve(m)
++   m
++ }
+> a=makeCacheMatrix(matrix(c(2,4,5,3),2,2))
+> cacheSolve(a)
+Error in x$setsolve(m) : unused argument (m)
+> a$get()
+     [,1] [,2]
+[1,]    2    5
+[2,]    4    3
+> solve(a$get())
+           [,1]       [,2]
+[1,] -0.2142857  0.3571429
+[2,]  0.2857143 -0.1428571
+> m <- solve(a$get())
+> m
+           [,1]       [,2]
+[1,] -0.2142857  0.3571429
+[2,]  0.2857143 -0.1428571
+> a$setsolve(m)
+Error in a$setsolve(m) : unused argument (m)
+> a$setsolve(m)
+Error in a$setsolve(m) : unused argument (m)
+> makeCacheMatrix <- function(x=matrix()) {
++   m <- NULL
++   set <- function(y) {
++     x <<- y
++     m <<- NULL
++   }
++   get <- function(){
++     x
++   } 
++   setsolve <- function(x){
++     m <<- solve(x)
++   } 
++   getsolve <- function(){
++     m
++   }
++   list(set = set, get = get,
++        setsolve = setsolve,
++        getsolve = getsolve)
++ }
+> 
+> #cachesolve function:
+> cacheSolve <- function(x, ...) {
++   m <- x$getsolve()
++   if(!is.null(m)) {
++     message("getting cached data")
++     return(m)
++   }
++    
++   m <- solve(x$get())
++   x$setsolve(m)
++   m
++ }
+> m
+           [,1]       [,2]
+[1,] -0.2142857  0.3571429
+[2,]  0.2857143 -0.1428571
+> a$setsolve(m)
+Error in a$setsolve(m) : unused argument (m)
+> makeCacheMatrix <- function(x=matrix()) {
++   m <- NULL
++   set <- function(y) {
++     x <<- y
++     m <<- NULL
++   }
++   get <- function(){
++     x
++   } 
++   setsolve <- function(m){
++     m <<- solve(x)
++   } 
++   getsolve <- function(){
++     m
++   }
++   list(set = set, get = get,
++        setsolve = setsolve,
++        getsolve = getsolve)
++ }
+> 
+> #cachesolve function:
+> cacheSolve <- function(x, ...) {
++   m <- x$getsolve()
++   if(!is.null(m)) {
++     message("getting cached data")
++     return(m)
++   }
++    
++   m <- solve(x$get())
++   x$setsolve(m)
++   m
++ }
+> a$setsolve(m)
+Error in a$setsolve(m) : unused argument (m)
+> m
+           [,1]       [,2]
+[1,] -0.2142857  0.3571429
+[2,]  0.2857143 -0.1428571
+> a$setsolve()
+> m
+           [,1]       [,2]
+[1,] -0.2142857  0.3571429
+[2,]  0.2857143 -0.1428571
+> a$getsolve()
+           [,1]       [,2]
+[1,] -0.2142857  0.3571429
+[2,]  0.2857143 -0.1428571
+> makeCacheMatrix <- function(x=matrix()) {
++   m <- NULL
++   set <- function(y) {
++     x <<- y
++     m <<- NULL
++   }
++   get <- function(){
++     x
++   } 
++   setsolve <- function(){
++     m <<- solve(x)
++   } 
++   getsolve <- function(){
++     m
++   }
++   list(set = set, get = get,
++        setsolve = setsolve,
++        getsolve = getsolve)
++ }
+> 
+> #cachesolve function:
+> cacheSolve <- function(x, ...) {
++   m <- x$getsolve()
++   if(!is.null(m)) {
++     message("getting cached data")
++     return(m)
++   }
++    
++   m <- solve(x$get())
++   x$setsolve()
++   m
++ }
+> a=makeCacheMatrix(matrix(c(2,4,5,3),2,2))
+> cacheSolve(a)
+           [,1]       [,2]
+[1,] -0.2142857  0.3571429
+[2,]  0.2857143 -0.1428571
+> cacheSolve(a)
+getting cached data
+           [,1]       [,2]
+[1,] -0.2142857  0.3571429
+[2,]  0.2857143 -0.1428571
+> a$get()
+     [,1] [,2]
+[1,]    2    5
+[2,]    4    3
+> cacheSolve(a)
+getting cached data
+           [,1]       [,2]
+[1,] -0.2142857  0.3571429
+[2,]  0.2857143 -0.1428571
+> a$set(c(3,4,5,6),2,2)
+Error in a$set(c(3, 4, 5, 6), 2, 2) : unused arguments (2, 2)
+> makeCacheMatrix <- function(x=matrix()) {
++   m <- NULL
++   set <- function(y=matrix()) {
++     x <<- y
++     m <<- NULL
++   }
++   get <- function(){
++     x
++   } 
++   setsolve <- function(){
++     m <<- solve(x)
++   } 
++   getsolve <- function(){
++     m
++   }
++   list(set = set, get = get,
++        setsolve = setsolve,
++        getsolve = getsolve)
++ }
+> 
+> #cachesolve function:
+> cacheSolve <- function(x, ...) {
++   m <- x$getsolve()
++   if(!is.null(m)) {
++     message("getting cached data")
++     return(m)
++   }
++    
++   m <- solve(x$get())
++   x$setsolve()
++   m
++ }
+> a$set(c(3,4,5,6),2,2)
+Error in a$set(c(3, 4, 5, 6), 2, 2) : unused arguments (2, 2)
+> makeCacheMatrix <- function(x = matrix()) {
++   m <- NULL
++   set <- function(x = matrix(...)) {
++     
++     x <<- y
++     m <<- NULL
++   }
++   get <- function(){
++     x
++   } 
++   setsolve <- function(){
++     m <<- solve(x)
++   } 
++   getsolve <- function(){
++     m
++   }
++   list(set = set, get = get,
++        setsolve = setsolve,
++        getsolve = getsolve)
++ }
+> 
+> #cachesolve function:
+> cacheSolve <- function(x, ...) {
++   m <- x$getsolve()
++   if(!is.null(m)) {
++     message("getting cached data")
++     return(m)
++   }
++    
++   m <- solve(x$get())
++   x$setsolve()
++   m
++ }
+> a$set(matrix(c(3,4,5,6),2,2))
+> cacheSolve(a)
+     [,1] [,2]
+[1,]   -3  2.5
+[2,]    2 -1.5
+> cacheSolve(a)
+getting cached data
+     [,1] [,2]
+[1,]   -3  2.5
+[2,]    2 -1.5
+> a$set(matrix(c(3,4,5,6,4,8,7.9.4),3,3))
+Erro: unexpected numeric constant in "a$set(matrix(c(3,4,5,6,4,8,7.9.4"
+> a$set(matrix(c(3,4,5,6,4,8,7.9,4),3,3))
+Warning message:
+In matrix(c(3, 4, 5, 6, 4, 8, 7.9, 4), 3, 3) :
+  comprimento dos dados [8] não é um submúltiplo ou múltiplo do número de linhas [3]
+> a$set(matrix(c(3,4,5,6,4,8,7,9,4),3,3))
+> cacheSolve(a)
+           [,1]        [,2]        [,3]
+[1,] -0.6222222  0.35555556  0.28888889
+[2,]  0.3222222 -0.25555556  0.01111111
+[3,]  0.1333333  0.06666667 -0.13333333
+> a$get()
+     [,1] [,2] [,3]
+[1,]    3    6    7
+[2,]    4    4    9
+[3,]    5    8    4
+> a$set(matrix(c(3,4,5,6,4,8,7,9,4),3,3))
+> a$get()
+     [,1] [,2] [,3]
+[1,]    3    6    7
+[2,]    4    4    9
+[3,]    5    8    4
+> setsolve()
+Erro: não foi possível encontrar a função "setsolve"
+> a$setsolve()
+> a$getsolve()
+           [,1]        [,2]        [,3]
+[1,] -0.6222222  0.35555556  0.28888889
+[2,]  0.3222222 -0.25555556  0.01111111
+[3,]  0.1333333  0.06666667 -0.13333333
+> cacheSolve(a)
+getting cached data
+           [,1]        [,2]        [,3]
+[1,] -0.6222222  0.35555556  0.28888889
+[2,]  0.3222222 -0.25555556  0.01111111
+[3,]  0.1333333  0.06666667 -0.13333333
+> # Main Function, with 'x' defined as a matrix. Example:
+> # a=makeCacheMatrix(matrix(c(2,4,5,3),2,2))
+> # IMPORTANT - You need to use a quadratic matrix - 2x2, 3x3, 4x4...
+> makeCacheMatrix <- function(x = matrix()) {
++   m <- NULL
++   # the 'set' sub-function will set a new matrix for testing...
++   # example of usage:
++   # a$set(matrix(c(3,4,5,6,4,8,7,9,4),3,3))
++   set <- function(x = matrix(...)) {
++     
++     x <<- y
++     m <<- NULL
++   }
++   # the 'get' sub-function will print the computed matrix. 
++   # Example:
++   # a$get()
++   get <- function(){
++     x
++   }
++   # The 'setsolve' subfunction will compute the inverse of the matrix...
++   # Example:
++   # a$setsolve()
++   setsolve <- function(){
++     m <<- solve(x)
++   } 
++   # The 'getsolve' subfunction will print the inverse of the matrix calculated...
++   # Example:
++   # a$getsolve()
++     getsolve <- function(){
++     m
++   }
++   list(set = set, get = get,
++        setsolve = setsolve,
++        getsolve = getsolve)
++ }
+> 
+> #cachesolve function:
+> cacheSolve <- function(x, ...) {
++   # this function will search for the computed inverse matrix.  If it could not 
++   # find it(not a NULL result, because 'm' was already calculated...)
++     m <- x$getsolve()
++   if(!is.null(m)) {
++     message("getting cached data")
++     # the function will 'get' the cached result in 'x$getsolve()'
++     return(m)
++   }
++    # I it is not calculated yet, the function will compute the inverse of the matrix!
++   m <- solve(x$get())
++   x$setsolve()
++   m
++   # Voilà!
++ }
+> a=makeCacheMatrix(matrix(c(2,4,5,3),2,2))
+> cacheSolve(a)
+           [,1]       [,2]
+[1,] -0.2142857  0.3571429
+[2,]  0.2857143 -0.1428571
+> a$set(matrix(c(3,4,5,6,4,8,7,9,4),3,3))
+Error in a$set(matrix(c(3, 4, 5, 6, 4, 8, 7, 9, 4), 3, 3)) : 
+  objeto 'y' não encontrado
+> a$set(matrix(c(3,4,5,6,4,8,7,9,4),3,3))
+Error in a$set(matrix(c(3, 4, 5, 6, 4, 8, 7, 9, 4), 3, 3)) : 
+  objeto 'y' não encontrado
+> # Main Function, with 'x' defined as a matrix. Example:
+> # a=makeCacheMatrix(matrix(c(2,4,5,3),2,2))
+> # IMPORTANT - You need to use a quadratic matrix - 2x2, 3x3, 4x4...
+> makeCacheMatrix <- function(x = matrix()) {
++   m <- NULL
++   # the 'set' sub-function will set a new matrix for a new computing task.
++   # example of usage:
++   # a$set(matrix(c(3,4,5,6,4,8,7,9,4),3,3))
++   set <- function(x = matrix(y,...)) {
++     
++     x <<- y
++     m <<- NULL
++   }
++   # the 'get' sub-function will print the computed matrix. 
++   # Example:
++   # a$get()
++   get <- function(){
++     x
++   }
++   # The 'setsolve' subfunction will compute the inverse of the matrix.
++   # Example:
++   # a$setsolve()
++   setsolve <- function(){
++     m <<- solve(x)
++   } 
++   # The 'getsolve' subfunction will print the inverse of the matrix calculated.
++   # Example:
++   # a$getsolve()
++     getsolve <- function(){
++     m
++   }
++   list(set = set, get = get,
++        setsolve = setsolve,
++        getsolve = getsolve)
++ }
+> 
+> #cachesolve function:
+> cacheSolve <- function(x, ...) {
++   # this function will search for the computed inverse matrix.  If it could not 
++   # find it(not a NULL result, because 'm' was already calculated...)
++     m <- x$getsolve()
++   if(!is.null(m)) {
++     message("getting cached data")
++     # the function will 'get' the cached result in 'x$getsolve()'
++     return(m)
++   }
++    # I it is not calculated yet, the function will compute the inverse of the matrix!
++   m <- solve(x$get())
++   x$setsolve()
++   m
++   # Voilà!
++ }
+> a$set(matrix(c(3,4,5,6,4,8,7,9,4),3,3))
+Error in a$set(matrix(c(3, 4, 5, 6, 4, 8, 7, 9, 4), 3, 3)) : 
+  objeto 'y' não encontrado
+> a$set(matrix(c(3,4,5,6,4,8,7,9,4),3,3))
+Error in a$set(matrix(c(3, 4, 5, 6, 4, 8, 7, 9, 4), 3, 3)) : 
+  objeto 'y' não encontrado
+> # Main Function, with 'x' defined as a matrix. Example:
+> # a=makeCacheMatrix(matrix(c(2,4,5,3),2,2))
+> # IMPORTANT - You need to use a quadratic matrix - 2x2, 3x3, 4x4...
+> makeCacheMatrix <- function(x = matrix()) {
++   m <- NULL
++   # the 'set' sub-function will set a new matrix for a new computing task.
++   # example of usage:
++   # a$set(matrix(c(3,4,5,6,4,8,7,9,4),3,3))
++   set <- function(y = matrix(...)) {
++     
++     x <<- y
++     m <<- NULL
++   }
++   # the 'get' sub-function will print the computed matrix. 
++   # Example:
++   # a$get()
++   get <- function(){
++     x
++   }
++   # The 'setsolve' subfunction will compute the inverse of the matrix.
++   # Example:
++   # a$setsolve()
++   setsolve <- function(){
++     m <<- solve(x)
++   } 
++   # The 'getsolve' subfunction will print the inverse of the matrix calculated.
++   # Example:
++   # a$getsolve()
++     getsolve <- function(){
++     m
++   }
++   list(set = set, get = get,
++        setsolve = setsolve,
++        getsolve = getsolve)
++ }
+> 
+> #cachesolve function:
+> cacheSolve <- function(x, ...) {
++   # this function will search for the computed inverse matrix.  If it could not 
++   # find it(not a NULL result, because 'm' was already calculated...)
++     m <- x$getsolve()
++   if(!is.null(m)) {
++     message("getting cached data")
++     # the function will 'get' the cached result in 'x$getsolve()'
++     return(m)
++   }
++    # I it is not calculated yet, the function will compute the inverse of the matrix!
++   m <- solve(x$get())
++   x$setsolve()
++   m
++   # Voilà!
++ }
+> a$set(matrix(c(3,4,5,6,4,8,7,9,4),3,3))
+Error in a$set(matrix(c(3, 4, 5, 6, 4, 8, 7, 9, 4), 3, 3)) : 
+  objeto 'y' não encontrado
+> # Main Function, with 'x' defined as a matrix. Example:
+> # a=makeCacheMatrix(matrix(c(2,4,5,3),2,2))
+> # IMPORTANT - You need to use a quadratic matrix - 2x2, 3x3, 4x4...
+> makeCacheMatrix <- function(x = matrix()) {
++   m <- NULL
++   # the 'set' sub-function will set a new matrix for a new computing task.
++   # example of usage:
++   # a$set(matrix(c(3,4,5,6,4,8,7,9,4),3,3))
++   set <- function(y) {
++     
++     x <<- y
++     m <<- NULL
++   }
++   # the 'get' sub-function will print the computed matrix. 
++   # Example:
++   # a$get()
++   get <- function(){
++     x
++   }
++   # The 'setsolve' subfunction will compute the inverse of the matrix.
++   # Example:
++   # a$setsolve()
++   setsolve <- function(){
++     m <<- solve(x)
++   } 
++   # The 'getsolve' subfunction will print the inverse of the matrix calculated.
++   # Example:
++   # a$getsolve()
++     getsolve <- function(){
++     m
++   }
++   list(set = set, get = get,
++        setsolve = setsolve,
++        getsolve = getsolve)
++ }
+> 
+> #cachesolve function:
+> cacheSolve <- function(x, ...) {
++   # this function will search for the computed inverse matrix.  If it could not 
++   # find it(not a NULL result, because 'm' was already calculated...)
++     m <- x$getsolve()
++   if(!is.null(m)) {
++     message("getting cached data")
++     # the function will 'get' the cached result in 'x$getsolve()'
++     return(m)
++   }
++    # I it is not calculated yet, the function will compute the inverse of the matrix!
++   m <- solve(x$get())
++   x$setsolve()
++   m
++   # Voilà!
++ }
+> a$set(matrix(c(3,4,5,6,4,8,7,9,4),3,3))
+Error in a$set(matrix(c(3, 4, 5, 6, 4, 8, 7, 9, 4), 3, 3)) : 
+  objeto 'y' não encontrado
+> # Main Function, with 'x' defined as a matrix. Example:
+> # a=makeCacheMatrix(matrix(c(2,4,5,3),2,2))
+> # IMPORTANT - You need to use a quadratic matrix - 2x2, 3x3, 4x4...
+> makeCacheMatrix <- function(x = matrix()) {
++   m <- NULL
++   # the 'set' sub-function will set a new matrix for a new computing task.
++   # example of usage:
++   # a$set(matrix(c(3,4,5,6,4,8,7,9,4),3,3))
++   set <- function(y) {
++     
++     y <<- x
++     m <<- NULL
++   }
++   # the 'get' sub-function will print the computed matrix. 
++   # Example:
++   # a$get()
++   get <- function(){
++     x
++   }
++   # The 'setsolve' subfunction will compute the inverse of the matrix.
++   # Example:
++   # a$setsolve()
++   setsolve <- function(){
++     m <<- solve(x)
++   } 
++   # The 'getsolve' subfunction will print the inverse of the matrix calculated.
++   # Example:
++   # a$getsolve()
++     getsolve <- function(){
++     m
++   }
++   list(set = set, get = get,
++        setsolve = setsolve,
++        getsolve = getsolve)
++ }
+> 
+> #cachesolve function:
+> cacheSolve <- function(x, ...) {
++   # this function will search for the computed inverse matrix.  If it could not 
++   # find it(not a NULL result, because 'm' was already calculated...)
++     m <- x$getsolve()
++   if(!is.null(m)) {
++     message("getting cached data")
++     # the function will 'get' the cached result in 'x$getsolve()'
++     return(m)
++   }
++    # I it is not calculated yet, the function will compute the inverse of the matrix!
++   m <- solve(x$get())
++   x$setsolve()
++   m
++   # Voilà!
++ }
+> a$set(matrix(c(3,4,5,6,4,8,7,9,4),3,3))
+Error in a$set(matrix(c(3, 4, 5, 6, 4, 8, 7, 9, 4), 3, 3)) : 
+  objeto 'y' não encontrado
+> # Main Function, with 'x' defined as a matrix. Example:
+> # a=makeCacheMatrix(matrix(c(2,4,5,3),2,2))
+> # IMPORTANT - You need to use a quadratic matrix - 2x2, 3x3, 4x4...
+> makeCacheMatrix <- function(x = matrix()) {
++   m <- NULL
++   # the 'set' sub-function will set a new matrix for a new computing task.
++   # example of usage:
++   # a$set(matrix(c(3,4,5,6,4,8,7,9,4),3,3))
++   set <- function() {
++     
++     y <<- x
++     m <<- NULL
++   }
++   # the 'get' sub-function will print the computed matrix. 
++   # Example:
++   # a$get()
++   get <- function(){
++     x
++   }
++   # The 'setsolve' subfunction will compute the inverse of the matrix.
++   # Example:
++   # a$setsolve()
++   setsolve <- function(){
++     m <<- solve(x)
++   } 
++   # The 'getsolve' subfunction will print the inverse of the matrix calculated.
++   # Example:
++   # a$getsolve()
++     getsolve <- function(){
++     m
++   }
++   list(set = set, get = get,
++        setsolve = setsolve,
++        getsolve = getsolve)
++ }
+> 
+> #cachesolve function:
+> cacheSolve <- function(x, ...) {
++   # this function will search for the computed inverse matrix.  If it could not 
++   # find it(not a NULL result, because 'm' was already calculated...)
++     m <- x$getsolve()
++   if(!is.null(m)) {
++     message("getting cached data")
++     # the function will 'get' the cached result in 'x$getsolve()'
++     return(m)
++   }
++    # I it is not calculated yet, the function will compute the inverse of the matrix!
++   m <- solve(x$get())
++   x$setsolve()
++   m
++   # Voilà!
++ }
+> a$set(matrix(c(3,4,5,6,4,8,7,9,4),3,3))
+Error in a$set(matrix(c(3, 4, 5, 6, 4, 8, 7, 9, 4), 3, 3)) : 
+  objeto 'y' não encontrado
+> # Main Function, with 'x' defined as a matrix. Example:
+> # a=makeCacheMatrix(matrix(c(2,4,5,3),2,2))
+> # IMPORTANT - You need to use a quadratic matrix - 2x2, 3x3, 4x4...
+> makeCacheMatrix <- function(x = matrix()) {
++   m <- NULL
++   # the 'set' sub-function will set a new matrix for a new computing task.
++   # example of usage:
++   # a$set(matrix(c(3,4,5,6,4,8,7,9,4),3,3))
++   set <- function(y) {
++     
++     x <<- y
++     m <<- NULL
++   }
++   # the 'get' sub-function will print the computed matrix. 
++   # Example:
++   # a$get()
++   get <- function(){
++     x
++   }
++   # The 'setsolve' subfunction will compute the inverse of the matrix.
++   # Example:
++   # a$setsolve()
++   setsolve <- function(){
++     m <<- solve(x)
++   } 
++   # The 'getsolve' subfunction will print the inverse of the matrix calculated.
++   # Example:
++   # a$getsolve()
++     getsolve <- function(){
++     m
++   }
++   list(set = set, get = get,
++        setsolve = setsolve,
++        getsolve = getsolve)
++ }
+> 
+> #cachesolve function:
+> cacheSolve <- function(x, ...) {
++   # this function will search for the computed inverse matrix.  If it could not 
++   # find it(not a NULL result, because 'm' was already calculated...)
++     m <- x$getsolve()
++   if(!is.null(m)) {
++     message("getting cached data")
++     # the function will 'get' the cached result in 'x$getsolve()'
++     return(m)
++   }
++    # I it is not calculated yet, the function will compute the inverse of the matrix!
++   m <- solve(x$get())
++   x$setsolve()
++   m
++   # Voilà!
++ }
+> a$set(matrix(c(3,4,5,6,4,8,7,9,4),3,3))
+Error in a$set(matrix(c(3, 4, 5, 6, 4, 8, 7, 9, 4), 3, 3)) : 
+  objeto 'y' não encontrado
+> a$set(matrix(c(3,4,5,6),2,2))
+Error in a$set(matrix(c(3, 4, 5, 6), 2, 2)) : objeto 'y' não encontrado
+> # Main Function, with 'x' defined as a matrix. Example:
+> # a=makeCacheMatrix(matrix(c(2,4,5,3),2,2))
+> # IMPORTANT - You need to use a quadratic matrix - 2x2, 3x3, 4x4...
+> makeCacheMatrix <- function(x = matrix()) {
++   m <- NULL
++   # the 'set' sub-function will set a new matrix for a new computing task.
++   # example of usage:
++   # a$set(matrix(c(3,4,5,6,4,8,7,9,4),3,3))
++   set <- function(x = matrix(...)) {
++     
++     x <<- y
++     m <<- NULL
++   }
++   # the 'get' sub-function will print the computed matrix. 
++   # Example:
++   # a$get()
++   get <- function(){
++     x
++   }
++   # The 'setsolve' subfunction will compute the inverse of the matrix.
++   # Example:
++   # a$setsolve()
++   setsolve <- function(){
++     m <<- solve(x)
++   } 
++   # The 'getsolve' subfunction will print the inverse of the matrix calculated.
++   # Example:
++   # a$getsolve()
++     getsolve <- function(){
++     m
++   }
++   list(set = set, get = get,
++        setsolve = setsolve,
++        getsolve = getsolve)
++ }
+> 
+> #cachesolve function:
+> cacheSolve <- function(x, ...) {
++   # this function will search for the computed inverse matrix.  If it could not 
++   # find it(not a NULL result, because 'm' was already calculated...)
++     m <- x$getsolve()
++   if(!is.null(m)) {
++     message("getting cached data")
++     # the function will 'get' the cached result in 'x$getsolve()'
++     return(m)
++   }
++    # I it is not calculated yet, the function will compute the inverse of the matrix!
++   m <- solve(x$get())
++   x$setsolve()
++   m
++   # Voilà!
++ }
+> a$set(matrix(c(3,4,5,6),2,2))
+Error in a$set(matrix(c(3, 4, 5, 6), 2, 2)) : objeto 'y' não encontrado
+> # Main Function, with 'x' defined as a matrix. Example:
+> # a=makeCacheMatrix(matrix(c(2,4,5,3),2,2))
+> # IMPORTANT - You need to use a quadratic matrix - 2x2, 3x3, 4x4...
+> makeCacheMatrix <- function(x = matrix()) {
++   m <- NULL
++   # the 'set' sub-function will set a new matrix for a new computing task.
++   # example of usage:
++   # a$set(matrix(c(3,4,5,6,4,8,7,9,4),3,3))
++   set <- function(x = matrix()) {
++     
++     x <<- y
++     m <<- NULL
++   }
++   # the 'get' sub-function will print the computed matrix. 
++   # Example:
++   # a$get()
++   get <- function(){
++     x
++   }
++   # The 'setsolve' subfunction will compute the inverse of the matrix.
++   # Example:
++   # a$setsolve()
++   setsolve <- function(){
++     m <<- solve(x)
++   } 
++   # The 'getsolve' subfunction will print the inverse of the matrix calculated.
++   # Example:
++   # a$getsolve()
++     getsolve <- function(){
++     m
++   }
++   list(set = set, get = get,
++        setsolve = setsolve,
++        getsolve = getsolve)
++ }
+> 
+> #cachesolve function:
+> cacheSolve <- function(x, ...) {
++   # this function will search for the computed inverse matrix.  If it could not 
++   # find it(not a NULL result, because 'm' was already calculated...)
++     m <- x$getsolve()
++   if(!is.null(m)) {
++     message("getting cached data")
++     # the function will 'get' the cached result in 'x$getsolve()'
++     return(m)
++   }
++    # I it is not calculated yet, the function will compute the inverse of the matrix!
++   m <- solve(x$get())
++   x$setsolve()
++   m
++   # Voilà!
++ }
+> a$set(matrix(c(3,4,5,6),2,2))
+Error in a$set(matrix(c(3, 4, 5, 6), 2, 2)) : objeto 'y' não encontrado
+> a$set(matrix(c(3,4,5,6),2,2))
+Error in a$set(matrix(c(3, 4, 5, 6), 2, 2)) : objeto 'y' não encontrado
+> # Main Function, with 'x' defined as a matrix. Example:
+> # a=makeCacheMatrix(matrix(c(2,4,5,3),2,2))
+> # IMPORTANT - You need to use a quadratic matrix - 2x2, 3x3, 4x4...
+> makeCacheMatrix <- function(x = matrix()) {
++   m <- NULL
++   # the 'set' sub-function will set a new matrix for a new computing task.
++   # example of usage:
++   # a$set(matrix(c(3,4,5,6,4,8,7,9,4),3,3))
++   set <- function(y = matrix(...)) {
++     
++     x <<- y
++     m <<- NULL
++   }
++   # the 'get' sub-function will print the computed matrix. 
++   # Example:
++   # a$get()
++   get <- function(){
++     x
++   }
++   # The 'setsolve' subfunction will compute the inverse of the matrix.
++   # Example:
++   # a$setsolve()
++   setsolve <- function(){
++     m <<- solve(x)
++   } 
++   # The 'getsolve' subfunction will print the inverse of the matrix calculated.
++   # Example:
++   # a$getsolve()
++     getsolve <- function(){
++     m
++   }
++   list(set = set, get = get,
++        setsolve = setsolve,
++        getsolve = getsolve)
++ }
+> 
+> #cachesolve function:
+> cacheSolve <- function(x, ...) {
++   # this function will search for the computed inverse matrix.  If it could not 
++   # find it(not a NULL result, because 'm' was already calculated...)
++     m <- x$getsolve()
++   if(!is.null(m)) {
++     message("getting cached data")
++     # the function will 'get' the cached result in 'x$getsolve()'
++     return(m)
++   }
++    # I it is not calculated yet, the function will compute the inverse of the matrix!
++   m <- solve(x$get())
++   x$setsolve()
++   m
++   # Voilà!
++ }
+> a$set(matrix(c(3,4,5,6),2,2))
+Error in a$set(matrix(c(3, 4, 5, 6), 2, 2)) : objeto 'y' não encontrado

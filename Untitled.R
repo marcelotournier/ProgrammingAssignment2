@@ -26,7 +26,7 @@ makeCacheMatrix <- function(x = matrix()) {
   # The 'getsolve' subfunction will print the inverse of the matrix calculated.
   # Example:
   # a$getsolve()
-  getsolve <- function(){
+    getsolve <- function(){
     m <<- solve(x)
     m
   }
@@ -39,13 +39,13 @@ makeCacheMatrix <- function(x = matrix()) {
 cacheSolve <- function(x, ...) {
   # this function will search for the computed inverse matrix.  If it could not 
   # find it(not a NULL result, because 'm' was already calculated...)
-  m <- x$getsolve()
+    m <- x$getsolve()
   if(!is.null(m)) {
     message("getting cached data")
     # the function will 'get' the cached result in 'x$getsolve()'
     return(m)
   }
-  # I it is not calculated yet, the function will compute the inverse of the matrix!
+   # I it is not calculated yet, the function will compute the inverse of the matrix!
   m <- solve(x$get())
   x$setsolve()
   m
